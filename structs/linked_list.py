@@ -1,9 +1,10 @@
-class LinkedList():
+class Node():
+    def __init__(self, value):
+        self.value = value
+        self.next = None
 
-    class Node():
-        def __init__(self, value):
-            self.value = value
-            self.next = None
+
+class LinkedList():
 
     def __init__(self):
         self.head = None
@@ -24,7 +25,7 @@ class LinkedList():
 
         assert index >= 0
 
-        new = LinkedList.Node(value)
+        new = Node(value)
 
         if index == 0:
             if self.head is not None:
