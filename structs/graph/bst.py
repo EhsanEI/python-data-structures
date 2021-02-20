@@ -3,6 +3,19 @@ class BinaryTreeNode:
         self.value = value
         self.children = [None, None]
 
+    def __str__(self):
+        result = []
+
+        if self.children[0] is not None:
+            result.append(self.children[0].__str__())
+
+        result.append(str(self.value))
+
+        if self.children[1] is not None:
+            result.append(self.children[1].__str__())
+
+        return ' '.join(result)
+
 
 class BST:
     def __init__(self):
@@ -36,9 +49,11 @@ class BST:
         if value > root.value:
             assert root.children[1] is not None
             root.children[1] = self._remove_and_return(root.children[1], value)
+            return root
         elif value < root.value:
             assert root.children[0] is not None
             root.children[0] = self._remove_and_return(root.children[0], value)
+            return root
         else:
             if root.children[0] is not None:
                 predecessor = self._max_node(root.children[0])
@@ -72,3 +87,6 @@ class BST:
             min_node = min_node.children[0]
 
         return min_node
+
+    def __str__(self):
+        return self.root.__str__()
