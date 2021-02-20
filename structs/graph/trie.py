@@ -25,7 +25,7 @@ class Trie():
 
         array = []
         child_strings = self._all_strings(node)
-        array.extend([''.join(prefix, string) for string in child_strings])
+        array.extend([''.join([prefix, string]) for string in child_strings])
         return array
 
     def _all_strings(self, node):
@@ -36,7 +36,7 @@ class Trie():
 
         for key, child in node.children.items():
             child_strings = self._all_strings(child)
-            array.extend([''.join(key, string) for string in child_strings])
+            array.extend([''.join([key, string]) for string in child_strings])
 
         return array
 
